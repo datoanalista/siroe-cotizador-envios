@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Envío exitoso!</h2>
+<mat-dialog-content>
+  <p>La cotización ha sido ingresada correctamente:</p>
+  <ul>
+    <li>Nombre Artículo: {{ data.cotizacion.nombreArticulo }}</li>
+    <li>Descripción: {{ data.cotizacion.descripcion }}</li>
+    <li>Volumen: {{ data.cotizacion.volumen }} cm³ 
+        ({{ (data.cotizacion.volumen / 1000000) | number: '1.0-2' }} m³)</li>    
+    <li>Precio: {{ data.cotizacion.precio | currency: 'CLP$ ': 'symbol' }}</li>
+    <li>Pedido ID: {{ data.cotizacion.pedidoId }}</li>
+    <li>Fecha: {{ data.cotizacion.fechaIngreso }}</li>
+    <li>Hora: {{ data.cotizacion.horaIngreso }}</li>
+  </ul>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cerrarDialogo()">Aceptar</button>
+  <button mat-button (click)="descargarPDF()">Ver PDF</button>
+</mat-dialog-actions>

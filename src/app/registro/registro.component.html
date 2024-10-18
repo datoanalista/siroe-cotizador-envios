@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>Registros de Cotización</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre Artículo</th>
+          <th>Descripción</th>
+          <th>Volumen (cm³)</th>
+          <th>Precio</th>
+          <th>Pedido ID</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cotizacion of cotizaciones">
+          <td>{{ cotizacion.nombreArticulo }}</td>
+          <td>{{ cotizacion.descripcion }}</td>
+          <td>{{ cotizacion.volumen }}</td>
+          <td>{{ cotizacion.precio | currency: 'CLP': 'symbol' }}</td>
+          <td>{{ cotizacion.pedidoId }}</td>
+          <td>{{ cotizacion.fechaIngreso }}</td>
+          <td>{{ cotizacion.horaIngreso }}</td>
+          <td>
+            <button (click)="eliminarRegistro(cotizacion.pedidoId)" class="btn btn-danger">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

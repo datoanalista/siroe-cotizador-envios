@@ -1,0 +1,47 @@
+<div class="container cotizador-form">
+    <h1>Cotizador SIROE</h1>
+    <p>Ingresa los campos para cotizar el envío</p>
+    <form (ngSubmit)="enviarCotizacion()" novalidate>
+      <h3>Cotiza acá!</h3>
+      <div class="form-group">
+        <label for="nombreArticulo">Nombre Artículo *</label>
+        <input #nombreInput type="text" [(ngModel)]="nombreArticulo" name="nombreArticulo" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción *</label>
+        <textarea [(ngModel)]="descripcion" name="descripcion" class="form-control" maxlength="100" rows="3" required></textarea>
+      </div>
+  
+      <div class="subtitulo">Dimensiones * (cms)</div>
+      <div class="dimensiones">
+        <div class="form-group">
+          <label for="largo">Largo</label>
+          <input  (focus)="seleccionarTexto($event)" type="number" [(ngModel)]="largo" name="largo" (input)="calcularPrecio()" class="form-control small-input" step="0.1" required>
+        </div>
+        <div class="form-group">
+          <label for="ancho">Ancho</label>
+          <input  (focus)="seleccionarTexto($event)" type="number" [(ngModel)]="ancho" name="ancho" (input)="calcularPrecio()" class="form-control small-input" step="0.1" required>
+        </div>
+        <div class="form-group">
+          <label for="alto">Alto </label>
+          <input (focus)="seleccionarTexto($event)" type="number" [(ngModel)]="alto" name="alto" (input)="calcularPrecio()" class="form-control small-input" step="0.1" required>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label>Precio:</label>
+        <label class="precio">{{ precio | currency: 'CLP$ ': 'symbol' }}</label>
+      </div>
+  
+      <div class="form-group">
+        <label>Volumen:</label>
+        <span class="precio">{{ volumen | number: '1.0-0' }} cm³ ({{ (volumen / 1000000) | number: '1.1-1' }} m³)</span>
+      </div>
+  
+      <div class="botones">
+        <button type="submit" class="btn btn-primary">Enviar cotización</button>
+        <button type="button" class="btn btn-secondary" (click)="limpiarDatos()">Limpiar datos</button>
+      </div>
+    </form>
+  </div>
+  
